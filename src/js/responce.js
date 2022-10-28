@@ -1,21 +1,40 @@
+import axios from 'axios';
+
+import { notification } from './notification';
 import card from '../templates/card.hbs';
-const cardsList = document.querySelector('.gallery');
+const API_KEY = '30907588-7c59c046d485207ae743f1a8b';
+export const cardsList = document.querySelector('.gallery');
+let pageNumber = 1;
+const loadBtn = document.querySelector('.load-more');
+
 export function responce(input) {
-  return fetch(
-    ` https://pixabay.com/api/?key=30907588-7c59c046d485207ae743f1a8b&q=${input}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`
-  )
+  axios
+    .get(
+      ` https://pixabay.com/api/?key=${API_KEY}&q=${input}&page=25&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`
+    )
     .then(responce => {
-      console.log(responce);
-      return responce.json();
+      notification(responce);
+      renderCard(responce.data.hits);
+      loadBtn.style.visibility = 'visible';
     })
-    .then(pictures => {
-      console.dir(pictures);
-      renderCard(pictures.hits);
+    .catch(error => console.log(error));
+}
+
+export function loadMoreGet(input) {
+  pageNumber += 1;
+  console.log(pageNumber);
+  axios
+    .get(
+      ` https://pixabay.com/api/?key=${API_KEY}&q=${input}&page=${pageNumber}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`
+    )
+    .then(responce => {
+      renderCard(responce.data.hits);
     })
+
     .catch(error => console.log(error));
 }
 
 function renderCard(pictures) {
   let murkup = card(pictures);
-  cardsList.innerHTML = murkup;
+  cardsList.insertAdjacentHTML('beforeend', murkup);
 }
