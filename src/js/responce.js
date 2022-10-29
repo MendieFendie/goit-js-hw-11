@@ -2,6 +2,9 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 import { notification } from './notification';
 import card from '../templates/card.hbs';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const API_KEY = '30907588-7c59c046d485207ae743f1a8b';
 export const cardsList = document.querySelector('.gallery');
 let pageNumber = 12;
@@ -44,4 +47,6 @@ export function loadMoreGet(input) {
 function renderCard(pictures) {
   let murkup = card(pictures);
   cardsList.insertAdjacentHTML('beforeend', murkup);
+  const gallery = new SimpleLightbox('.gallery a');
+  gallery.refresh();
 }
