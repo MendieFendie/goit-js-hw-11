@@ -7,8 +7,9 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const API_KEY = '30907588-7c59c046d485207ae743f1a8b';
 export const cardsList = document.querySelector('.gallery');
-let pageNumber = 12;
+let pageNumber = 1;
 const loadBtn = document.querySelector('.load-more');
+const gallery = new SimpleLightbox('.gallery a');
 
 export function responce(input) {
   axios
@@ -47,6 +48,6 @@ export function loadMoreGet(input) {
 function renderCard(pictures) {
   let murkup = card(pictures);
   cardsList.insertAdjacentHTML('beforeend', murkup);
-  const gallery = new SimpleLightbox('.gallery a');
+
   gallery.refresh();
 }
