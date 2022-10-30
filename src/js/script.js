@@ -14,6 +14,7 @@ refs.input.addEventListener('input', searchValue);
 refs.button.addEventListener('click', sendValue);
 refs.loadMoreBtn.addEventListener('click', loadMore);
 refs.gallery.addEventListener('click', openModal);
+let searchWord = '';
 
 refs.loadMoreBtn.style.visibility = 'hidden';
 function searchValue(e) {
