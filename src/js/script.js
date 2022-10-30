@@ -1,6 +1,4 @@
-import { responce } from './responce';
-import { loadMoreGet } from './responce';
-import { cardsList } from './responce';
+import { responce, loadMoreGet, cardsList } from './responce';
 
 const refs = {
   searchForm: document.querySelector('.search-form'),

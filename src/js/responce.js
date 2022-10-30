@@ -11,20 +11,16 @@ let pageNumber = 1;
 const loadBtn = document.querySelector('.load-more');
 const gallery = new SimpleLightbox('.gallery a');
 
-export function responce(input) {
-  axios
-    .get(
-      ` https://pixabay.com/api/?key=${API_KEY}&q=${input}&page=${pageNumber}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`
-    )
-    .then(responce => {
-      notification(responce);
-      renderCard(responce.data.hits);
-      loadBtn.style.visibility = 'visible';
-    })
-    .catch(error => console.log(error));
+export async function responce(input) {
+  const answer = await axios.get(
+    ` https://pixabay.com/api/?key=${API_KEY}&q=${input}&page=${pageNumber}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`
+  );
+  notification(answer);
+  renderCard(answer.data.hits);
+  loadBtn.style.visibility = 'visible';
 }
 
-export function loadMoreGet(input) {
+export async function loadMoreGet(input) {
   pageNumber += 1;
   console.log(pageNumber);
   if (pageNumber === 13) {
@@ -33,16 +29,10 @@ export function loadMoreGet(input) {
     );
     loadBtn.style.visibility = 'hidden';
   }
-  axios
-    .get(
-      ` https://pixabay.com/api/?key=${API_KEY}&q=${input}&page=${pageNumber}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`
-    )
-    .then(responce => {
-      console.log(responce.data);
-      renderCard(responce.data.hits);
-    })
-
-    .catch(error => console.log(error));
+  const answer = await axios.get(
+    ` https://pixabay.com/api/?key=${API_KEY}&q=${input}&page=${pageNumber}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`
+  );
+  renderCard(answer.data.hits);
 }
 
 function renderCard(pictures) {
