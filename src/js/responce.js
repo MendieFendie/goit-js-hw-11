@@ -9,17 +9,11 @@ const API_KEY = '30907588-7c59c046d485207ae743f1a8b';
 export const cardsList = document.querySelector('.gallery');
 let pageNumber = 1;
 const loadBtn = document.querySelector('.load-more');
-const gallery = new SimpleLightbox('.gallery a');
 
 export function responce(input) {
   axios
     .get(
-      `https://pixabay.com/api/?key=${API_KEY}&q=${input}&page=${pageNumber}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`
-      // {
-      //   Headers: {
-      //     'Content-Type': 'application / json',
-      //   },
-      // }
+      ` https://pixabay.com/api/?key=${API_KEY}&q=${input}&page=${pageNumber}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`
     )
     .then(responce => {
       notification(responce);

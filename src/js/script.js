@@ -22,7 +22,6 @@ function searchValue(e) {
 
 function sendValue(event) {
   event.preventDefault();
-  console.log(searchWord);
   cardsList.innerHTML = '';
   responce(searchWord);
 }
