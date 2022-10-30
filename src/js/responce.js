@@ -17,7 +17,7 @@ export function responce(input) {
       `https://pixabay.com/api/?key=${API_KEY}&q=${input}&page=${pageNumber}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`,
       {
         Headers: {
-          'Content-Type': 'application / json',
+          'Content-Type': 'application / javascript',
         },
       }
     )
