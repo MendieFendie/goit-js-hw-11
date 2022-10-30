@@ -47,10 +47,15 @@ img {
   margin-top: 30px;
   margin-bottom: 25px;
   background-color: #0a0a23;
+  transition: background-color 1s;
   color: #fff;
   border: none;
   border-radius: 10px;
   padding: 15px;
   min-height: 30px;
   min-width: 120px;
+}
+
+.load-more:hover {
+  background-color: #29e57e;
 }
