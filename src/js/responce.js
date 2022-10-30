@@ -14,8 +14,12 @@ const gallery = new SimpleLightbox('.gallery a');
 export function responce(input) {
   axios
     .get(
-      ` https://pixabay.com/api/?key=${API_KEY}&q=${input}&page=${pageNumber}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`,
-      { 'content-type': aplication / json }
+      `https://pixabay.com/api/?key=${API_KEY}&q=${input}&page=${pageNumber}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`,
+      {
+        Headers: {
+          'Content-Type': 'application / json',
+        },
+      }
     )
     .then(responce => {
       notification(responce);
