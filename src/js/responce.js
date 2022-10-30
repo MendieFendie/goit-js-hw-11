@@ -9,6 +9,7 @@ const API_KEY = '30907588-7c59c046d485207ae743f1a8b';
 export const cardsList = document.querySelector('.gallery');
 let pageNumber = 1;
 const loadBtn = document.querySelector('.load-more');
+const gallery = new SimpleLightbox('.gallery a');
 
 export function responce(input) {
   axios

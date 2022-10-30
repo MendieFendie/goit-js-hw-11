@@ -17,7 +17,7 @@ refs.gallery.addEventListener('click', openModal);
 
 refs.loadMoreBtn.style.visibility = 'hidden';
 function searchValue(e) {
-  searchWord = e.target.value.trim();
+  searchWord = e.currentTarget.value.trim();
 }
 
 function sendValue(event) {
